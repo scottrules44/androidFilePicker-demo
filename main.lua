@@ -1,7 +1,7 @@
-local androidFileShare = require "plugin.androidFileShare"
+local androidFilePicker = require "plugin.androidFilePicker"
 local json = require("json")
 local bg = display.newRect( display.contentCenterX, display.contentCenterY, display.actualContentWidth, display.actualContentHeight )
-local logo = display.newText( "Android Pick File Plugin", 0, 0, native.systemFontBold, 20 )
+local logo = display.newText( "Android File Picker Plugin", 0, 0, native.systemFontBold, 20 )
 logo.x, logo.y = display.contentCenterX, 50
 bg:setFillColor( 0,0,.5 )
 local widget = require("widget")
@@ -13,7 +13,7 @@ pickFile = widget.newButton( {
 	id = "shareFile",
 	labelColor = { default={ 0, 0, 1 }, over={ 0, 0, 0, 0.5 } },
 	onRelease = function ( e )
-		androidFileShare.show("image/*",pathToImport, function ( ev )
+		androidFilePicker.show("image/*",pathToImport, function ( ev )
             if (ev.isError == false) then
                 local showImage = display.newImage( "imageFromPicker.png", system.DocumentsDirectory )
                 showImage:scale( .3, .3 )
